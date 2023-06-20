@@ -1,0 +1,46 @@
+compile all the file present in package
+
+> javac .\AccountPkg\*.java 
+
+compile specific file from the package
+> javac .\AccountPkg\ManageAccount.java 
+
+
+===========================================
+AccountPkg
+  -> Account.class
+       -Account()
+       -toString()
+       -addAccount()
+        {
+          =generateUniqueAccId()
+        }
+        -generateUniqueAccId()
+        -isAccountValid()
+        {
+          =findAccount()
+        }
+        -deposit()
+        {
+          =updateAccountBalance()
+        }
+        -whithdraw()
+        {
+          =updateAccountBalance
+        }
+        -getAccDetails()
+        -getAccountFromDatabase()
+        {
+          =getAccountFromFile();
+        }
+        -getBalance()
+        -menu()
+        -AccountOperation()
+        {
+          
+        }
+
+
+
+
+       
