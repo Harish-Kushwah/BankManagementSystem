@@ -16,7 +16,7 @@ public class Home {
         System.out.println("1.Enter if you are customer");
         System.out.println("2.Enter if you are Account manager");
         System.out.println("3.Enter if you are Customer manager");
-        System.out.println("4.Enter if you are bank manager");
+        System.out.println("4.Enter if you are Bank manager");
         System.out.println("5.Enter if you are Employee");
         System.out.println("6.ENter for bank information");
         System.out.println("0.Exit");
