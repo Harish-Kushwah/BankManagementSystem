@@ -1,7 +1,7 @@
 # Bank Management System
 
 ## Home page section
- ![Screenshot Description](BankManagementSystem\Images\homepage.png)
+ ![Screenshot Description](Images/homepage.png)
 
 ## Contributing
 
