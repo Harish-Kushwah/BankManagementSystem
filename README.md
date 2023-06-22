@@ -15,7 +15,7 @@ Bank Management System is a Java-based project that simulates a basic bank syste
 
 ## Technologies Used
 
-- Java 11: The programming language used for the project.
+- Java 17.0.7: The programming language used for the project.
 - File Handling: To store and retrieve account data in text files.
 
 ## Getting Started
