@@ -1,11 +1,14 @@
 # Bank Management System
 
 ## Home page section
- ![Screenshot Description](Images/homepage.png)
+
+![Screenshot Description](Images/homepage.png)
 
 ---
-##Customer section
- ![Screenshot Description](Images/customerpage.png)
+
+## Customer section
+
+![Screenshot Description](Images/customerpage.png)
 
 ## Contributing
 
