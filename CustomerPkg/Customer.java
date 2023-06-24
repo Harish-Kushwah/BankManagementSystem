@@ -12,7 +12,7 @@ public class Customer  implements Serializable
     static int id = 0;
     private static final long  serialVersionUID = -3366073526597920846L;
     private int cust_id ;
-    private String cust_pass;
+    String cust_pass;
     
     String cust_address;
     String cust_username;
@@ -52,6 +52,10 @@ public class Customer  implements Serializable
         id +=1;
         return id;
     }
+    public String getUserName()
+    {
+        return this.cust_username;
+    }
 
     void setPassword()
     {
@@ -69,7 +73,7 @@ public class Customer  implements Serializable
     @Override
     public String toString()
     {
-        return "\nId : " + this.cust_id + "\tName : " + this.cust_name + "\tUsername : " +this.cust_username+ "\tEmail : " +this.cust_email ;
+        return "\nId : " + this.cust_id + "\tName : " + this.cust_name + "\tUsername : " +this.cust_username+ "\tEmail : " +this.cust_email + "\tPassword : " + this.cust_pass;
         //return new StringBuffer("Name :").append(this.cust_name).append("Id ").append(this.cust_id); 
     }
     static void customerMenu1()
@@ -98,18 +102,8 @@ public class Customer  implements Serializable
     }
     static void adminMenu()
     {
-         System.out.println("1.Insert");
-         System.out.println("2.Display");
-         // System.out.println("3.search");
-        // System.out.println("4.Delete");
-        // System.out.println("5.Update");
-        // System.out.println("6.Sort By Account number on screen");
-        // System.out.println("7.Sort By Account number in file");
-        // System.out.println("8.Sort By Account name on screen");
-        // System.out.println("9.Sort By Account name in file");
-        // System.out.println("10.Rewrite all data of file");
-        // System.out.println("10.Sort By Emp sal on screen");
-        // System.out.println("11.Sort By Emp sal in file");
+        System.out.println("1.Insert");
+        System.out.println("2.Display");
         System.out.println("0.Exit");
     }
     static int inputKey()
@@ -129,7 +123,6 @@ public class Customer  implements Serializable
         int key =-1;
         while(true)
         {
-            // System.out.print("Enter key :");
             boolean exceptionCaught = false;
             try{ 
                 design.applyPurple("Enter key ");
@@ -178,6 +171,17 @@ public class Customer  implements Serializable
         }
 
     } 
+    public Customer signUpCustomer()
+    {
+        this.addCutomer();
+        ArrayList<Customer> customerList = new ArrayList<Customer>();
+        customerList.add(this);
+        CustomerDatabase customerDb = new CustomerDatabase();
+        customerDb.insertRecord(customerList);
+         return this;
+        
+
+    }
     public void adminOperation()
     {
         adminMenu();
@@ -225,7 +229,7 @@ public class Customer  implements Serializable
                  }
                  catch(IOException e)
                  {
-                    System.out.println("Input out put exception");
+                    System.out.println("No record present in database ");
                  }
                
             }
@@ -252,7 +256,7 @@ public class Customer  implements Serializable
             accountDB.insertRecord(accountList);
 
             design.applyGreen("Account created Successfully..!\n");
-            // System.out.println("Account created Successfully...!");            
+                    
         }
     }
     Account getAccountDetails(String cust_name , int cust_account_number)
@@ -262,33 +266,11 @@ public class Customer  implements Serializable
         if(account!=null)
         return account;
         else{
-            
-            // System.out.println("No account details found");
+        
             design.applyRed("No account details found\n");
             return null;
         }
     }
-    // Account transactionAccount()
-    // {
-    //     Design design = new Design();
-    //     Scanner scan =  new Scanner(System.in);
-    //     Scanner scan_str = new Scanner(System.in);
-
-    //     // System.out.print("Enter your name : ");
-    //     design.applyBlue("Enter your Name :");
-    //     design.fillPurple();
-    //     String cust_name = scan_str.nextLine();
-    //     design.resetColor();
-
-    //     // System.out.print("Enter your Account Number : ");
-    //     design.applyBlue("Enter your Account Number : ");
-        
-    //     design.fillPurple();
-    //     int cust_account_number = scan.nextInt();
-    //     design.resetColor();
-        
-    //     return getAccountDetails(cust_name , cust_account_number);
-    // }
      Account transactionAccount()
     {
         Account account = new Account();

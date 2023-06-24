@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 import AccountPkg.ManageAccount;
+import AuthenticatePkg.Login;
+import AuthenticatePkg.SignUp;
 import CustomerPkg.Customer;
 import CustomerPkg.ManageCustomer;
 import DesignPkg.Design;
@@ -23,6 +25,71 @@ public class Home {
         design.resetColor();
     }
 
+    static void authenticateMenu()
+    {
+        Design design = new Design();
+        design.fillCyan();
+        System.out.println("1.Login");
+        System.out.println("2.SignUp");
+        System.out.println("0.Exit");
+        
+        design.resetColor();
+    }
+   static Customer applyAuthentication()
+    {
+
+        Scanner scan = new Scanner(System.in);
+        Design design = new Design();
+        design.authenticateSection();
+        authenticateMenu();
+
+        
+        while(true){
+                design.applyPurple("Enter key ");
+                design.applyGreen("<authenticate> :");
+                design.fillYellow();
+                int key = scan.nextInt();
+                design.resetColor();
+            if(key==1)
+            {
+                design.loginSection();
+                Login login  = new Login();
+                Customer customer = login.applyLoginCondition();
+                if(customer==null){
+                    design.applyRed("Unable to authenticate please enter correct details\n");
+                    
+                } 
+                else{
+                    design.applyGreen("Successfully logged in\n");
+                    return customer;
+                }
+
+            }
+            else if(key==2)
+            {
+                design.signUpSection();
+                SignUp signup = new SignUp();
+                Customer customer = signup.applySignUpCondition();
+                if(customer==null){
+                    design.applyRed("Unable to signup please enter correct details\n");
+                    
+                } 
+                else{
+                    design.applyGreen("Successfully signed up\n");
+                    return customer;
+                }
+            }
+            else if(key==0){
+                System.out.println("Successfully exit from authentication module");
+                break;
+            }
+            else{
+                design.applyRed("Enter valid case");
+
+           }
+        }
+        return null;
+    }
     static int inputKey()
     {
          Scanner scan = new Scanner(System.in);
@@ -60,9 +127,13 @@ public class Home {
           
             if(key == 1)
             {
-                design.customerSectionHeader();
-                Customer customer = new Customer();
+
+                Customer customer = applyAuthentication();
+
+                if(customer!=null){
+                design.customerSectionHeader(customer.getUserName());
                 customer.customerOperation();
+                }
             }
             else if(key == 2)
             {

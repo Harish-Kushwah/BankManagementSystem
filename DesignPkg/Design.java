@@ -80,7 +80,9 @@ class Color
   
    
 }
-public class Design extends Color {
+public class Design extends Color implements Serializable {
+
+    private static final long  serialVersionUID = -3366073526597920847L;
 
 
     void printLine()
@@ -110,6 +112,16 @@ public class Design extends Color {
         String heading = "CUSTOMER SECTION";
         greenYellowDesign(heading);
     }
+    public void customerSectionHeader(String user_name)
+    {
+        customerSectionHeader();
+
+        applyPurple("Name :");
+        applyGreen(user_name);
+        printNewLine();
+
+        
+    }
      public void accountSectionHeader()
     {
         String heading = "ACCOUNT SECTION";
@@ -121,6 +133,21 @@ public class Design extends Color {
         String heading = "ADMIN CUSTOMER ";
         greenYellowDesign(heading);
 
+    }
+    public void loginSection()
+    {
+        String heading = "LOGIN SECTION";
+        greenYellowDesign(heading);
+    }
+     public void signUpSection()
+    {
+        String heading = "SIGNUP SECTION";
+        greenYellowDesign(heading);
+    }
+    public void authenticateSection()
+    {
+        String heading = "AUTHENTICATE SECTION";
+        greenYellowDesign(heading);
     }
       public void adminAccSectionHeader()
     {

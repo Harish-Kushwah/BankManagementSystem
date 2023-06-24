@@ -52,38 +52,68 @@ public class CustomerDatabase {
         return null;
     }
 
+    public Customer findByNameAndPass(String usr_name ,String pass)
+    {
+        
+        try{
+            ArrayList<Customer> customerList = readDataFromFile();
+            if(customerList!=null)
+            {
+                for(Customer customer : customerList){
+                    if(customer.cust_username.equals(usr_name) && customer.cust_pass.equals(pass)){
+                        return customer;
+                    }
+                }
+            }
+           
+        }
+        catch( StreamCorruptedException st )
+        {
+            //    System.out.println("Stream was Corrupted ");
+             return null;
+        }
+        catch( IOException e)
+        {
+            System.out.println("File is empty ");
+             return null;
+        }
+         return null;
+    }
     void insertRecord(ArrayList<Customer> customerList)
     {
         try{
         File file = new File("Files/CustomerInfo.txt");
+
           ArrayList<Customer> tempCustomerList = new ArrayList<Customer>();
 
-          try{
-            if(file.length()!=0){
-                tempCustomerList =   readDataFromFile();
+            try{
+                if(file.length()!=0){
+                    tempCustomerList =   readDataFromFile();
+                }
             }
-          }
-          catch( StreamCorruptedException st )
-          {
-            //    System.out.println("Stream was Corrupted ");
-          }
-          catch( IOException e)
-          {
-            System.out.println("Input out exception ");
-          }
-         
-          //Append the remaining customer record
-          for(Customer  customer :customerList){
-            tempCustomerList.add(customer);
-          }
+            catch( StreamCorruptedException st )
+            {
+                //    System.out.println("Stream was Corrupted ");
+            }
+            catch( IOException e)
+            {
+                System.out.println("Input out exception ");
+            }
+            
+            //Append the remaining customer record
+            for(Customer  customer :customerList){
+                tempCustomerList.add(customer);
+            }
           
           setNewDateIntoFile(tempCustomerList);
           }
-          catch( InvalidClassException i)
-          {
-            System.out.println("Invalid class exception caught ");
-            // deleteFile();
-          }
+
+        catch( InvalidClassException i)
+        {
+        System.out.println("Invalid class exception caught ");
+        // deleteFile();
+        }
+    
          
           
     }
