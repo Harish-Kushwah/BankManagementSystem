@@ -82,6 +82,7 @@ class Color
 }
 public class Design extends Color implements Serializable {
 
+    @Serial
     private static final long  serialVersionUID = -3366073526597920847L;
 
 

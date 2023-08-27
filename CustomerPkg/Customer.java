@@ -10,6 +10,7 @@ import java.io.*;
 public class Customer  implements Serializable 
 {
     static int id = 0;
+    @Serial
     private static final long  serialVersionUID = -3366073526597920846L;
     private int cust_id ;
     String cust_pass;
@@ -154,9 +155,10 @@ public class Customer  implements Serializable
             else if(key == 4)
             {
                 design.accountSectionHeader();
-                 Account account = transactionAccount();
-                 if(account!=null)
-                 account.getAccDetails();
+                Account account = transactionAccount();
+                if(account!=null) {
+                     account.getAccDetails();
+                     }
             }
             else if(key == 0)
             {
@@ -165,7 +167,7 @@ public class Customer  implements Serializable
             }
             else{
                 if(!exceptionCaught)
-                System.out.println("Enter valid case ");
+                 System.out.println("Enter valid case ");
             }
             
         }

@@ -1,6 +1,4 @@
-import java.io.*;
 import java.util.*;
-
 import AccountPkg.ManageAccount;
 import AuthenticatePkg.Login;
 import AuthenticatePkg.SignUp;
@@ -20,7 +18,7 @@ public class Home {
         System.out.println("3.Enter if you are Customer manager");
         System.out.println("4.Enter if you are Bank manager");
         System.out.println("5.Enter if you are Employee");
-        System.out.println("6.ENter for bank information");
+        System.out.println("6.Enter for bank information");
         System.out.println("0.Exit");
         design.resetColor();
     }
@@ -110,9 +108,6 @@ public class Home {
         int key=-1;      
         while(true)
         {
-            // design.fillPurple();
-            // System.out.print("Enter key :");
-            // design.resetColor();
             boolean exceptionCaught = false;
             try{ 
               key = inputKey();
@@ -149,15 +144,15 @@ public class Home {
             }
             else if(key==4)
             {
-                
+                System.out.println("Not added");
             }
             else if(key==5)
             {
-                
+                System.out.println("Not added");
             }
             else if(key==6)
             {
-                
+                System.out.println("Not added");
             }
             else if(key==0)
             {
@@ -166,7 +161,7 @@ public class Home {
             }
             else {
                 if(!exceptionCaught)
-                System.out.println("Enter valid case.");
+                 System.out.println("Enter valid case.");
              }
             
             

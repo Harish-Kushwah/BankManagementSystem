@@ -5,21 +5,24 @@ import DesignPkg.Design;
 
 public class Account implements Serializable
 {
+    @Serial
     private static final long  serialVersionUID = 2111865428100305111L;
-    static int acc_id = 0;
+    static int unique_number= 0;
+    int acc_id;
     int acc_num;
     String acc_holder;
     float acc_balance;
 
     public Account(){}
 
-    Account(int acc_id ,int acc_num ,String acc_holder ,float acc_balance)
+    /* this is not using
+    Account(int id ,int acc_num ,String acc_holder ,float acc_balance)
     {
-        this.acc_id = acc_id;
+        this.acc_id = id;
         this.acc_num = acc_num;
         this.acc_holder = acc_holder;
         this.acc_balance = acc_balance;
-    }
+    }*/
     @Override
     public String toString()
     {
@@ -49,8 +52,7 @@ public class Account implements Serializable
         Scanner scan =  new Scanner(System.in);
         design.applyBlue("Enter Account number :");
         design.fillPurple();
-        int acc_num= scan.nextInt();
-        return acc_num;
+        return scan.nextInt();
            
     }
     float inputAccBalance() throws InputMismatchException
@@ -59,42 +61,40 @@ public class Account implements Serializable
         Scanner scan =  new Scanner(System.in);
         design.applyBlue("Enter account balance :");
         design.fillPurple();
-        float acc_balance= scan.nextFloat();
-        return acc_balance;
+        return scan.nextFloat();
            
     }
   public int setValidAccNum()
-    {
-        int acc_num = -1;
+  {
+        int acc_num = 0;
         Design design = new Design();
-        boolean validAccNumInput =false; 
+        boolean validAccNumInput =false;
         while(!validAccNumInput){
 
             try
             {
                 acc_num = inputAccNum();
                 if(acc_num<=0){
-                    validAccNumInput = false;
                      design.applyRed("Enter valid Account number\n");
                 }
                 else{
                     validAccNumInput = true;
                 }
+                design.resetColor();
+                return acc_num;
             }
             catch(InputMismatchException e)
             {
-                design.applyRed("Enter valid Account number\n");     
+                design.applyRed("Enter valid Account number\n");
+                return 0;
             }
-            
-            design.resetColor();
-      }
-      if(acc_num!=-1){
-        return acc_num;
-      }
-      else{
-        return 0;
-      }
-    }
+
+
+
+        }
+      return Math.max(acc_num, 0);
+
+  }
     public float setValidAccBalance()
     {
         float acc_balance = -1.f;
@@ -132,7 +132,7 @@ public class Account implements Serializable
     {
       
         String special = "@#$%^&*!-_+=}[]/;'~1234567890";
-        char arr[] = special.toCharArray();
+        char []arr = special.toCharArray();
         int len = special.length();
 
         for(int i =0;i<len;i++)
@@ -151,7 +151,7 @@ public class Account implements Serializable
                String name = inputAccName(); 
                if(isValidString(name)){
                 //  this.acc_holder = name;
-                //  validNameInput = true;
+                   validNameInput = true;
                 return name;
                }
                else{
@@ -171,10 +171,9 @@ public class Account implements Serializable
         this.acc_balance = setValidAccBalance();
         this.acc_id = generateUniqueAccId();
     }
-    int generateUniqueAccId()
+    static int generateUniqueAccId()
     {
-        acc_id+=1;
-        return acc_id;
+        return ++unique_number;
     }
     
     boolean isAccountValid()
